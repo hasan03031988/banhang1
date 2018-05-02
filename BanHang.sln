@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanHang.Data", "BanHang.Data\BanHang.Data.csproj", "{53767BBA-2580-4B9D-BA31-06FC8786DC51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanHang.Common", "BanHang.Common\BanHang.Common.csproj", "{53C100AF-6D6E-47A1-AE44-5D1D1DF7C2A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanHang.Model", "BanHang.Model\BanHang.Model.csproj", "{3573BCDC-2B85-4E8A-BAB8-CEEB3C20DBCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanHang.Service", "BanHang.Service\BanHang.Service.csproj", "{CA377936-888D-48E5-B645-D73788E2E160}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanHang.UnitTest", "BanHang.UnitTest\BanHang.UnitTest.csproj", "{A407F795-650D-43F1-88CC-C311F42D4682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BanHang.Web", "BanHang.Web\BanHang.Web.csproj", "{45564F2B-7B98-4334-8C5F-2A166ED21476}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{53767BBA-2580-4B9D-BA31-06FC8786DC51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53767BBA-2580-4B9D-BA31-06FC8786DC51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53767BBA-2580-4B9D-BA31-06FC8786DC51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53767BBA-2580-4B9D-BA31-06FC8786DC51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53C100AF-6D6E-47A1-AE44-5D1D1DF7C2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53C100AF-6D6E-47A1-AE44-5D1D1DF7C2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53C100AF-6D6E-47A1-AE44-5D1D1DF7C2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53C100AF-6D6E-47A1-AE44-5D1D1DF7C2A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3573BCDC-2B85-4E8A-BAB8-CEEB3C20DBCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3573BCDC-2B85-4E8A-BAB8-CEEB3C20DBCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3573BCDC-2B85-4E8A-BAB8-CEEB3C20DBCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3573BCDC-2B85-4E8A-BAB8-CEEB3C20DBCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA377936-888D-48E5-B645-D73788E2E160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA377936-888D-48E5-B645-D73788E2E160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA377936-888D-48E5-B645-D73788E2E160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA377936-888D-48E5-B645-D73788E2E160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A407F795-650D-43F1-88CC-C311F42D4682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A407F795-650D-43F1-88CC-C311F42D4682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A407F795-650D-43F1-88CC-C311F42D4682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A407F795-650D-43F1-88CC-C311F42D4682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45564F2B-7B98-4334-8C5F-2A166ED21476}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45564F2B-7B98-4334-8C5F-2A166ED21476}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45564F2B-7B98-4334-8C5F-2A166ED21476}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45564F2B-7B98-4334-8C5F-2A166ED21476}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
