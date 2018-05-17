@@ -3,15 +3,19 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BanHang.Model.Models
 {
-    [Table("Footers")]
-    public class Footer
+    [Table("Tags")]
+    public class Tag
     {
         [Key]
         [MaxLength(50)]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string ID { set; get; }
 
         [Required]
-        public string Content { set; get; }
+        [MaxLength(50)]
+        public string Name { set; get; }
+
+        [Required]
+        [MaxLength(50)]
+        public string Type { set; get; }
     }
 }
