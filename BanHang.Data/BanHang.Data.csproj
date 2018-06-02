@@ -49,20 +49,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BanHangDbcontext.cs" />
+    <Compile Include="BanHangDbContext.cs" />
+    <Compile Include="Infrastructure\DbFactory.cs" />
+    <Compile Include="Infrastructure\Disposable.cs" />
     <Compile Include="Infrastructure\IDbFactory.cs" />
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Infrastructure\RepositoryBase.cs" />
+    <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BanHang.Common\BanHang.Common.csproj">
       <Project>{53c100af-6d6e-47a1-ae44-5d1d1df7c2a2}</Project>
       <Name>BanHang.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BanHang.Model\BanHang.Model.csproj">
+      <Project>{3573bcdc-2b85-4e8a-bab8-ceeb3c20dbca}</Project>
+      <Name>BanHang.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
