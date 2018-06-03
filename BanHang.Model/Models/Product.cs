@@ -26,7 +26,8 @@ namespace BanHang.Model.Models
         [MaxLength(256)]
         public string Image { set; get; }
 
-        public XElement MoreImage { set; get; }
+        [Column(TypeName ="xml")]
+        public string MoreImage { set; get; }
 
         public decimal Price { set; get; }
 
