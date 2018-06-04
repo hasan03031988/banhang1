@@ -3,7 +3,7 @@ using BanHang.Model.Models;
 
 namespace BanHang.Data.Repositories
 {
-    public interface IPostCategoryRepository
+    public interface IPostCategoryRepository : IRepository<PostCategory>
     { }
 
     public class PostCategoryRepository : RepositoryBase<PostCategory>, IPostCategoryRepository

@@ -3,7 +3,7 @@ using BanHang.Model.Models;
 
 namespace BanHang.Data.Repositories
 {
-    public interface IPageRepository
+    public interface IPageRepository : IRepository<Page>
     { }
 
     public class PageRepository : RepositoryBase<Page>, IPageRepository

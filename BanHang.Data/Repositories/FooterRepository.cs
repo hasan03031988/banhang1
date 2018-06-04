@@ -3,7 +3,7 @@ using BanHang.Model.Models;
 
 namespace BanHang.Data.Repositories
 {
-    public interface IFooterRepository
+    public interface IFooterRepository : IRepository<Footer>
     {
     }
 

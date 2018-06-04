@@ -3,7 +3,7 @@ using BanHang.Model.Models;
 
 namespace BanHang.Data.Repositories
 {
-    public interface ISlideRepository
+    public interface ISlideRepository : IRepository<Slide>
     { }
 
     public class SlideRepository : RepositoryBase<Slide>, ISlideRepository

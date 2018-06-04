@@ -3,7 +3,7 @@ using BanHang.Model.Models;
 
 namespace BanHang.Data.Repositories
 {
-    public interface IMenuGroupRepository
+    public interface IMenuGroupRepository : IRepository<MenuGroup>
     { }
 
     public class MenuGroupRepository : RepositoryBase<MenuGroup>, IMenuGroupRepository
