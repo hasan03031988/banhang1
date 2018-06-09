@@ -76,7 +76,7 @@ namespace BanHang.Service
 
         public void SaveChanges()
         {
-            _unitOfWork.commit();
+            _unitOfWork.Commit();
         }
 
         public void Update(Post post)

@@ -3,7 +3,7 @@ namespace BanHang.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialDB : DbMigration
+    public partial class Initial : DbMigration
     {
         public override void Up()
         {
@@ -183,7 +183,9 @@ namespace BanHang.Data.Migrations
                         MetaDescription = c.String(maxLength: 256),
                         Status = c.Boolean(nullable: false),
                     })
-                .PrimaryKey(t => t.ID);
+                .PrimaryKey(t => t.ID)
+                .ForeignKey("dbo.PostCategories", t => t.CategoryID, cascadeDelete: true)
+                .Index(t => t.CategoryID);
             
             CreateTable(
                 "dbo.PostTags",
@@ -281,6 +283,7 @@ namespace BanHang.Data.Migrations
             DropForeignKey("dbo.ProductTags", "ProductID", "dbo.Products");
             DropForeignKey("dbo.PostTags", "TagID", "dbo.Tags");
             DropForeignKey("dbo.PostTags", "PostID", "dbo.Posts");
+            DropForeignKey("dbo.Posts", "CategoryID", "dbo.PostCategories");
             DropForeignKey("dbo.OrderDetails", "ProductID", "dbo.Products");
             DropForeignKey("dbo.Products", "CategoryID", "dbo.ProductCategories");
             DropForeignKey("dbo.OrderDetails", "OrderID", "dbo.Orders");
@@ -289,6 +292,7 @@ namespace BanHang.Data.Migrations
             DropIndex("dbo.ProductTags", new[] { "ProductID" });
             DropIndex("dbo.PostTags", new[] { "TagID" });
             DropIndex("dbo.PostTags", new[] { "PostID" });
+            DropIndex("dbo.Posts", new[] { "CategoryID" });
             DropIndex("dbo.Products", new[] { "CategoryID" });
             DropIndex("dbo.OrderDetails", new[] { "ProductID" });
             DropIndex("dbo.OrderDetails", new[] { "OrderID" });

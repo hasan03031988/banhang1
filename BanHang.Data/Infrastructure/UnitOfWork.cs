@@ -22,7 +22,7 @@ namespace BanHang.Data.Infrastructure
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }
 
-        public void commit()
+        public void Commit()
         {
             DbContext.SaveChanges();
         }
