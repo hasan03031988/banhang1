@@ -2,6 +2,7 @@
 using BanHang.Data.Repositories;
 using BanHang.Model.Models;
 using System.Collections.Generic;
+using System;
 
 namespace BanHang.Service
 {
@@ -18,6 +19,7 @@ namespace BanHang.Service
         IEnumerable<PostCategory> GetAllByParentId(int parentId);
 
         PostCategory GetById(int id);
+        void Save();
     }
 
     public class PostCategoryService : IPostCategoryService
@@ -54,6 +56,11 @@ namespace BanHang.Service
         public PostCategory GetById(int id)
         {
             return _postCategoryRepository.GetSingleById(id);
+        }
+
+        public void Save()
+        {
+            _UnitOfWork.Commit();
         }
 
         public void Update(PostCategory postCategory)

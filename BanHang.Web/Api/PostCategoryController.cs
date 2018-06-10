@@ -1,39 +1,101 @@
-﻿using System;
+﻿using BanHang.Model.Models;
+using BanHang.Service;
+using BanHang.Web.Infrastructure.Core;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
 namespace BanHang.Web.Api
 {
-    public class PostCategoryController : ApiController
+    [RoutePrefix("api/postcategory")]
+    public class PostCategoryController : ApiControllerBase
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        IPostCategoryService _postCategoryService;
+        public PostCategoryController(IErrorService errorService,IPostCategoryService postCategoryService) : 
+            base(errorService)
         {
-            return new string[] { "value1", "value2" };
+            this._postCategoryService = postCategoryService;
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        [Route("getall")]
+        public HttpResponseMessage Get(HttpRequestMessage repuest)
         {
-            return "value";
+            return CreateHttpResponse(repuest, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    repuest.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var listCategory = _postCategoryService.GetAll();
+                    _postCategoryService.Save();
+                    response = repuest.CreateResponse(HttpStatusCode.OK, listCategory);
+                }
+                return response;
+            });
         }
 
-        // POST api/<controller>
-        public void Post([FromBody]string value)
+        [Route("add")]
+        public HttpResponseMessage Post(HttpRequestMessage repuest, PostCategory postCategory)
         {
+            return CreateHttpResponse(repuest, () => 
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    repuest.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    var category = _postCategoryService.Add(postCategory);
+                    _postCategoryService.Save();
+                    response = repuest.CreateResponse(HttpStatusCode.Created, category);
+                }
+                return response;
+            });
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage repuest, PostCategory postCategory)
         {
+            return CreateHttpResponse(repuest, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    repuest.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    _postCategoryService.Update(postCategory);
+                    _postCategoryService.Save();
+                    response = repuest.CreateResponse(HttpStatusCode.OK);
+                }
+                return response;
+            });
+        }
+       
+        public HttpResponseMessage Delete(HttpRequestMessage repuest, int id)
+        {
+            return CreateHttpResponse(repuest, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    repuest.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                }
+                else
+                {
+                    _postCategoryService.Delete(id);
+                    _postCategoryService.Save();
+                    response = repuest.CreateResponse(HttpStatusCode.OK);
+                }
+                return response;
+            });
         }
 
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
     }
 }
