@@ -1,10 +1,13 @@
-﻿using BanHang.Model.Models;
+﻿using AutoMapper;
+using BanHang.Model.Models;
 using BanHang.Service;
 using BanHang.Web.Infrastructure.Core;
+using BanHang.Web.Models;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BanHang.Web.Infrastructure.Extensions;
 
 namespace BanHang.Web.Api
 {
@@ -26,15 +29,16 @@ namespace BanHang.Web.Api
 
 
                 var listCategory = _postCategoryService.GetAll();
+                var listPostCategoryVm = Mapper.Map<List<PostCategoryViewModel>>(listCategory);
 
-                HttpResponseMessage response = repuest.CreateResponse(HttpStatusCode.OK, listCategory);
+                HttpResponseMessage response = repuest.CreateResponse(HttpStatusCode.OK, listPostCategoryVm);
 
                 return response;
             });
         }
 
         [Route("add")]
-        public HttpResponseMessage Post(HttpRequestMessage repuest, PostCategory postCategory)
+        public HttpResponseMessage Post(HttpRequestMessage repuest, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(repuest, () =>
             {
@@ -45,7 +49,9 @@ namespace BanHang.Web.Api
                 }
                 else
                 {
-                    var category = _postCategoryService.Add(postCategory);
+                    PostCategory newPostCategory = new PostCategory();
+                    newPostCategory.UpdatePostCategory(postCategoryVm);
+                    var category = _postCategoryService.Add(newPostCategory);
                     _postCategoryService.Save();
                     response = repuest.CreateResponse(HttpStatusCode.Created, category);
                 }
@@ -54,7 +60,7 @@ namespace BanHang.Web.Api
         }
 
         [Route("update")]
-        public HttpResponseMessage Put(HttpRequestMessage repuest, PostCategory postCategory)
+        public HttpResponseMessage Put(HttpRequestMessage repuest, PostCategoryViewModel postCategoryVm)
         {
             return CreateHttpResponse(repuest, () =>
             {
@@ -65,7 +71,9 @@ namespace BanHang.Web.Api
                 }
                 else
                 {
-                    _postCategoryService.Update(postCategory);
+                    var postCategoryDb = _postCategoryService.GetById(postCategoryVm.ID);
+                    postCategoryDb.UpdatePostCategory(postCategoryVm);
+                    _postCategoryService.Update(postCategoryDb);
                     _postCategoryService.Save();
                     response = repuest.CreateResponse(HttpStatusCode.OK);
                 }
