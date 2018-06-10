@@ -12,7 +12,7 @@ namespace BanHang.Web.Api
     public class PostCategoryController : ApiControllerBase
     {
         IPostCategoryService _postCategoryService;
-        public PostCategoryController(IErrorService errorService,IPostCategoryService postCategoryService) : 
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService) :
             base(errorService)
         {
             this._postCategoryService = postCategoryService;
@@ -23,17 +23,12 @@ namespace BanHang.Web.Api
         {
             return CreateHttpResponse(repuest, () =>
             {
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    repuest.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listCategory = _postCategoryService.GetAll();
-                    _postCategoryService.Save();
-                    response = repuest.CreateResponse(HttpStatusCode.OK, listCategory);
-                }
+
+
+                var listCategory = _postCategoryService.GetAll();
+
+                HttpResponseMessage response = repuest.CreateResponse(HttpStatusCode.OK, listCategory);
+
                 return response;
             });
         }
@@ -41,7 +36,7 @@ namespace BanHang.Web.Api
         [Route("add")]
         public HttpResponseMessage Post(HttpRequestMessage repuest, PostCategory postCategory)
         {
-            return CreateHttpResponse(repuest, () => 
+            return CreateHttpResponse(repuest, () =>
             {
                 HttpResponseMessage response = null;
                 if (ModelState.IsValid)
@@ -77,7 +72,7 @@ namespace BanHang.Web.Api
                 return response;
             });
         }
-       
+
         public HttpResponseMessage Delete(HttpRequestMessage repuest, int id)
         {
             return CreateHttpResponse(repuest, () =>
