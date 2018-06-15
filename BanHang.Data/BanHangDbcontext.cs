@@ -1,4 +1,5 @@
 ﻿using BanHang.Model.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BanHang.Data
 {
-    public class BanHangDbContext : DbContext
+    public class BanHangDbContext : IdentityDbContext<ApplicationUser>
     {
         public BanHangDbContext() : base("BanHangConnection")
         {
@@ -37,12 +38,18 @@ namespace BanHang.Data
 
         public DbSet<VisitorStatistic> VisitorStatistics { set; get; }
         public DbSet<Error> Errors { set; get; }
-        
+
+        public static BanHangDbContext Create()
+        {
+            return new BanHangDbContext();
+        }
 
 
         protected override void OnModelCreating(DbModelBuilder builder)
         {
             //base.OnModelCreating(modelBuilder);
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
         }
     }
 }
